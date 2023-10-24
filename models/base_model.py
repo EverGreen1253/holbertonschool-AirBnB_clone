@@ -1,43 +1,62 @@
 #!/usr/bin/python3
-"""Module with class BaseModel"""
-
+""" Nameless module for BaseModel class """
 import json
 import uuid
 from datetime import datetime
 
 
 class BaseModel:
-    """Defines all common attributes/methods for other classes"""
+    """A BaseModel class.
 
-    def __init__(self, *args, **kwargs):
-        """Initialize class attibutes"""
+    Args:
+        None
+
+    Parameters:
+        id (str): contains the uuid for the model
+        created_at (datetime): created datetime
+        updated_at (datetime): last updated datetime
+
+    Returns:
+        Nothing
+    """
+
+    id = None
+    created_at = None
+    updated_at = None
+
+    def __init__(self):
+        """Initialize class BaseModel"""
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
-        if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "created_at" or k == "updated_at":
-                    v = datetime.strptime(v, '%Y-%m-%dT%H:%M:%S.%f')
-                    setattr(self, k, v)
-                else:
-                    if k != "__class__":
-                        setattr(self, k, v)
-        else:
-            pass
+        self.created_at = datetime.utcnow()
+        self.updated_at = datetime.utcnow()
 
     def __str__(self):
         """Prints formatted string"""
-        return (f"[{type(self).__name__}] ({self.id}) {self.to_dict()}")
+        return "[BaseModel] ({0}) {1}".format(self.id, self.__dict__)
 
     def save(self):
-        """Updates instance attribute updated_at with current datetime"""
+        """Updates updated_at with current datetime
+
+        Args:
+            None
+
+        Returns:
+            Nothing
+        """
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """Returns the dictionary representation of an instance """
+        """Return dictionary of all key value pairs of this instance
+
+        Args:
+            None
+
+        Returns:
+            Nothing
+        """
         new_dict = self.__dict__.copy()
         new_dict["created_at"] = self.created_at.isoformat()
         new_dict["updated_at"] = self.updated_at.isoformat()
-        new_dict["__class__"] = type(self).__name__
+        new_dict["__class__"] = self.__class__.__name__
+
         return new_dict
