@@ -42,6 +42,13 @@ class BaseModel:
             Nothing
         """
         self.updated_at = datetime.now()
+        dict_str = str(json.dumps(self.to_dict()))
+
+        file_name = "BaseModel.json"
+
+        with open(file_name, "w", encoding="utf-8") as f:
+            f.write(dict_str)
+
 
     def to_dict(self):
         """Return dictionary of all key value pairs of this instance
