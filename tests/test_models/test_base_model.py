@@ -32,5 +32,12 @@ class TestBase(unittest.TestCase):
 
         self.assertEqual(b.id, d["id"])
 
+    def test_to_str_method(self):
+        """Tests that the instance can be stringified
+        """
+        b = BaseModel()
+        self.assertEqual(b.__str__(), "[BaseModel] ({0}) {1}".format(b.id, b.__dict__))
+
+
 if __name__ == '__main__':
     unittest.main()
