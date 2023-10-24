@@ -32,24 +32,11 @@ class BaseModel:
 
     def __str__(self):
         """Prints formatted string"""
-        return "[BaseModel] ({0}) {1}".format(self.id, self.__dict__)
+        return (f"[{type(self)}] ({self.id}) {self.to_dict()}")
 
     def save(self):
-        """Updates updated_at with current datetime
-
-        Args:
-            None
-
-        Returns:
-            Nothing
-        """
+        """Updates public instance attribute updated_at with current datetime"""
         self.updated_at = datetime.now()
-        # dict_str = str(json.dumps(self.to_dict()))
-
-        # file_name = "BaseModel.json"
-
-        # with open(file_name, "w", encoding="utf-8") as f:
-        #     f.write(dict_str)
 
 
     def to_dict(self):
