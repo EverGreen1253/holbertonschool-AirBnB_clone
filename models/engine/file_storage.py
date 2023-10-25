@@ -69,19 +69,24 @@ class FileStorage:
 
     def new(self, obj):
         """Sets the obj data into __objects"""
-        data = obj.to_dict()
-        key = obj.__class__.__name__ + "." + data['id']
-        self.objects[key] = data
+        key = obj.__class__.__name__ + "." + obj.id
+        self.objects[key] = obj
 
     def save(self):
         """Serialises __objects data into JSON format in the file specified by __file_path"""
-        data = str(json.dumps(self.objects))
+        serialised = {}
+        for key in self.objects:
+            serialised[key] = self.objects[key].to_dict()
+
+        data = str(json.dumps(serialised))
 
         with open(self.file_path, "w", encoding="utf-8") as f:
             f.write(str(data))
 
     def reload(self):
         """Reads the JSON data from file specified at __file_path"""
+        from models.base_model import BaseModel
+
         data = ""
         if os.path.isfile(self.file_path) is True:
             try:
@@ -91,4 +96,9 @@ class FileStorage:
             except IOError:
                 pass
 
-            self.objects = json.loads(data)
+            serialised = json.loads(data)
+
+            for key in serialised:
+                s = serialised[key]
+                b = BaseModel(id=s["id"], created_at=s["created_at"], updated_at=s["updated_at"])
+                self.objects[key] = b
