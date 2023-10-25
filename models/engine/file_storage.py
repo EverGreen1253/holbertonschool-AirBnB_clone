@@ -100,5 +100,10 @@ class FileStorage:
 
             for key in serialised:
                 s = serialised[key]
-                b = BaseModel(id=s["id"], created_at=s["created_at"], updated_at=s["updated_at"])
+                kwargs = {}
+                for k in s:
+                    kwargs[k] = s[k]
+
+                b = BaseModel(**kwargs)
+
                 self.objects[key] = b
