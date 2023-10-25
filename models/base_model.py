@@ -3,6 +3,7 @@
 import json
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -38,6 +39,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = datetime.utcnow()
+            storage.new(self)
 
     def __str__(self):
         """Prints formatted string"""
@@ -53,6 +55,7 @@ class BaseModel:
             Nothing
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """Return dictionary of all key value pairs of this instance
