@@ -41,7 +41,9 @@ class TestBase(unittest.TestCase):
         """
         bm = BaseModel()
         bm.value = 999
+        old = bm.updated_at.isoformat()
         bm.save()
-        d = bm.to_dict()
-        self.assertEqual(d["value"], 999)
-        self.assertNotEqual(datetime.utcnow().isoformat(), bm.updated_at.isoformat())
+        new = bm.updated_at.isoformat()
+
+        self.assertEqual(bm.value, 999)
+        self.assertNotEqual(old, new)
