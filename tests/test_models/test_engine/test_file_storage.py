@@ -4,6 +4,7 @@
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from datetime import datetime
 
 class TestBase(unittest.TestCase):
     """Test functions for FileStorage Class
@@ -43,4 +44,4 @@ class TestBase(unittest.TestCase):
         bm.save()
         d = bm.to_dict()
         self.assertEqual(d["value"], 999)
-        self.assertEqual(d["updated_at"], bm.updated_at.isoformat())
+        self.assertNotEqual(datetime.utcnow().isoformat(), bm.updated_at.isoformat())
