@@ -24,12 +24,16 @@ class TestBase(unittest.TestCase):
         x = len(fs.objects) > 0
         self.assertEqual(x, True)
 
+        key = "BaseModel." + str(bm.id)
+        d = fs.objects[key].to_dict()
+        self.assertEqual(bm.id, d["id"])
+
     def test_all_method_return_type(self):
         """Tests all method return dict
         """
         fs = FileStorage()
-        a = fs.all()
-        self.assertEqual(type(a), dict)
+        x = len(fs.all()) > 0
+        self.assertEqual(x, True)
 
     def test_save_method_works(self):
         """Tests that save method writes to file successfully
