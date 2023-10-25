@@ -43,3 +43,4 @@ class TestBase(unittest.TestCase):
         bm.save()
         d = bm.to_dict()
         self.assertEqual(d["value"], 999)
+        self.assertEqual(d["updated_at"], bm.updated_at)
