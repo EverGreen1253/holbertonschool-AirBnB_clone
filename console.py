@@ -34,9 +34,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """Handles empty or whitespace input
-        """
-        return cmd.Cmd.emptyline(self)
+        """Handles empty or whitespace input and overwrites the parent class emptyline method """
+        return False
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
