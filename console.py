@@ -33,11 +33,10 @@ class HBNBCommand(cmd.Cmd):
         """
         return True
 
-    def precmd(self, line):
-        """Does something to the line input by the user
+    def emptyline(self):
+        """Handles empty or whitespace input
         """
-        line = line.strip()
-        return line
+        return cmd.Cmd.emptyline(self)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
