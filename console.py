@@ -17,9 +17,9 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_EOF(self, arg):
-        """Prints out a EOF char?
+        """Exits the console
         """
-        print("", end="")
+        return True
 
     def do_help(self, arg):
         """Prints out the help menu
@@ -32,6 +32,12 @@ class HBNBCommand(cmd.Cmd):
         """Quits the console
         """
         return True
+
+    def precmd(self, line):
+        """Does something to the line input by the user
+        """
+        line = line.strip()
+        return line
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
