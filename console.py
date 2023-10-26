@@ -19,6 +19,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """Prints out a EOF char?
         """
+        print("", end="")
 
     def do_help(self, arg):
         """Prints out the help menu
