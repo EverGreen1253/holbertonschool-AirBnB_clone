@@ -131,28 +131,17 @@ class HBNBCommand(cmd.Cmd):
         """prints out stringified data of all instances of specified class
         """
         all_list = []
-        all_dict = {}
 
         args = arg.split()
-        if len(args) == 0:
-            for class_name_key in self.instances:
-                all_dict[class_name_key] = []
+        if self.arguments_specified(args, 1) is True:
+            class_name = args[0]
 
-                if len(self.instances[class_name_key]) > 0:
-                    for instance_id_key in self.instances[class_name_key]:
-                        all_list.append(str(self.instances[class_name_key][instance_id_key]))
+            if class_name in self.instances:
+                if len(self.instances[class_name]) > 0:
+                    for instance_id_key in self.instances[class_name]:
+                        all_list.append(str(self.instances[class_name][instance_id_key]))
 
                     print(all_list)
-        elif len(args) == 1:
-            if self.arguments_specified(args, 1) is True:
-                class_name = args[0]
-
-                if class_name in self.instances:
-                    if len(self.instances[class_name]) > 0:
-                        for instance_id_key in self.instances[class_name]:
-                            all_list.append(str(self.instances[class_name][instance_id_key]))
-
-                        print(all_list)
 
     def do_update(self, arg):
         """updates specific instance based on args passed in
