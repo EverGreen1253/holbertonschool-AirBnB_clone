@@ -43,7 +43,7 @@ class BaseModel:
 
     def __str__(self):
         """Prints formatted string"""
-        return "[BaseModel] ({0}) {1}".format(self.id, self.__dict__)
+        return "[{0}] ({1}) {2}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """Updates updated_at with current datetime
