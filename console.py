@@ -17,7 +17,8 @@ class HBNBCommand(cmd.Cmd):
     intro = ''
     prompt = '(hbnb) '
     module_names = {
-        "BaseModel": "base_model"
+        "BaseModel": "base_model",
+        "User": "user",
     }
     instances = {}
     err_msg = {
