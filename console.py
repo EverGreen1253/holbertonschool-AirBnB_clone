@@ -107,6 +107,7 @@ class HBNBCommand(cmd.Cmd):
             # common sense tells me the file will contain multiple class instances' data
             new_instance.save()
             print(new_instance.id)
+            return new_instance.id
 
     def do_show(self, arg):
         """prints out details of existing class instance
