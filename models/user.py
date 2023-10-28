@@ -19,7 +19,15 @@ class User(BaseModel):
         Nothing
     """
 
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
+    email = None
+    password = None
+    first_name = None
+    last_name = None
+
+    def __init__(self, *args, **kwargs):
+        """Initialize class User"""
+        super().__init__(*args, **kwargs)
+
+        if len(kwargs) > 0:
+            for key in kwargs:
+                setattr(self, key, kwargs[key])
