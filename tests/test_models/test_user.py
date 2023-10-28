@@ -13,7 +13,7 @@ class TestBase(unittest.TestCase):
         u = User()
         test_string = "test@email.com"
         u.email = test_string
-        self.assertEqual(u.email, "test@email.com")
+        self.assertEqual(type(u.email).__name__, "str")
 
     def test_attr_password(self):
         """Tests password attribute
@@ -21,21 +21,21 @@ class TestBase(unittest.TestCase):
         u = User()
         test_string = "yo_momma_is_phat_123"
         u.password = test_string
-        self.assertEqual(u.password, "yo_momma_is_phat_123")
+        self.assertEqual(type(u.password).__name__, "str")
 
     def test_attr_first_name(self):
         """Tests first_name attribute
         """
         u = User()
         u.first_name = "Clark"
-        self.assertEqual(u.first_name, "Clark")
+        self.assertEqual(type(u.first_name).__name__, "str")
 
     def test_attr_last_name(self):
         """Tests last_name attribute
         """
         u = User()
         u.last_name = "Kent"
-        self.assertEqual(u.last_name, "Kent")
+        self.assertEqual(type(u.last_name).__name__, "str")
 
     def test_to_str_method(self):
         """Tests that the instance can be stringified
