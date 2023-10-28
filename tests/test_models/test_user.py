@@ -10,10 +10,9 @@ class TestBase(unittest.TestCase):
     def test_attr_email(self):
         """Tests email attribute
         """
-        u = User()
-        test_string = "test@email.com"
-        u.email = test_string
-        self.assertEqual(type(u.email).__name__, "str")
+        user = User()
+        self.assertTrue(hasattr(user, "email"))
+        self.assertEqual(user.email, "")
 
     def test_attr_password(self):
         """Tests password attribute
