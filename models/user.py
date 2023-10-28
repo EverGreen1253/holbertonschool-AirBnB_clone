@@ -24,10 +24,10 @@ class User(BaseModel):
     first_name = None
     last_name = None
 
-    def __init__(self, *args, **kwargs):
-        """Initialize class User"""
-        super().__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     """Initialize class User"""
+    #     super().__init__(*args, **kwargs)
 
-        if len(kwargs) > 0:
-            for key in kwargs:
-                setattr(self, key, kwargs[key])
+    #     if len(kwargs) > 0:
+    #         for key in kwargs:
+    #             setattr(self, key, kwargs[key])
