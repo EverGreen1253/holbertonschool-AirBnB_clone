@@ -19,6 +19,11 @@ class HBNBCommand(cmd.Cmd):
     module_names = {
         "BaseModel": "base_model",
         "User": "user",
+        "State": "state",
+        "City": "city",
+        "Amenity": "amenity",
+        "Place": "place",
+        "Review": "review"
     }
     instances = {}
     err_msg = {
