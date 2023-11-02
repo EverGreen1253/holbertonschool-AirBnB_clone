@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """Unittests for Base Model Class
 """
 import unittest
@@ -37,7 +37,6 @@ class TestBase(unittest.TestCase):
         """
         b = BaseModel()
         self.assertEqual(b.__str__(), "[BaseModel] ({0}) {1}".format(b.id, b.__dict__))
-
 
 if __name__ == '__main__':
     unittest.main()

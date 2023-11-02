@@ -47,3 +47,6 @@ class TestBase(unittest.TestCase):
 
         self.assertEqual(bm.value, 999)
         self.assertNotEqual(old, new)
+
+if __name__ == '__main__':
+    unittest.main()
